@@ -9,7 +9,7 @@ class LinkStationServiceImpl : LinkStationService {
     override fun findNearestStation(device: Device, linkStations: List<LinkStation>): LinkStation? {
         var bestLinkStation : LinkStation? = null
         linkStations.forEach {
-            val distance = distanceToStation(it, device)
+            val distance = sqrt((it.x - device.x).pow(2) + (it.y - device.y).pow(2))
 
            it.power = if (it.reach >= distance)  (it.reach - distance).pow(2)  else 0.0
 
@@ -27,10 +27,4 @@ class LinkStationServiceImpl : LinkStationService {
 
         return bestLinkStation!!.copy()
     }
-
-    private fun distanceToStation(linkStation: LinkStation, device: Device): Double {
-        return sqrt((linkStation.x - device.x).pow(2) + (linkStation.y - device.y).pow(2))
-    }
-
-
 }
