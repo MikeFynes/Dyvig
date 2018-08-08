@@ -1,6 +1,5 @@
-package com.fynes.dyvig
+package com.fynes.dyvig.model
 
-import com.fynes.dyvig.model.SlidingWindow
 import org.junit.Assert
 import org.junit.Test
 
